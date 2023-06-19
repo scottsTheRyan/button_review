@@ -29,23 +29,34 @@ function BookList() {
   </section>
   );
 };
-//test
+//now we add an event, typically named 'e' and log it to see all the 
+//wonderful details we can see in the terminal
 const EventExamples = () => {
-  const handleFormInput= () => {
-    console.log('handle form input')
+  const handleFormInput= (e) => {
+    console.log(e);
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log('its a good show');
   };
   const handleButtonClick = () => {
     alert('handle button click');
   };
+  // need e.preventDefault() to show console.log
+  // NOTE you have to hold down click on the form and press enter to get 'form submitted to show
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  };
+
   return (
     <section>
-      <form>
+      <form onSubmit={handleFormSubmission}>
         <h2>Reviewing Forms</h2>
-        <input 
-          type='text'
-          name='example'
+        <input
+          type="text"
+          name="example"
           onChange={handleFormInput}
-          style={{margin: '1 rem 0'}}
+          style={{ margin: "1 rem 0" }}
         />
       </form>
       <button onClick={handleButtonClick}>Click Here</button>
